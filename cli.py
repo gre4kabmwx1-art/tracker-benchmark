@@ -1,6 +1,7 @@
 import click
 
 from tracker_benchmark.metrics import iou
+from tracker_benchmark.compare import compare_scores
 
 
 @click.group()
@@ -29,12 +30,7 @@ def run(box_a, box_b):
 @click.option("--score-b", required=True, type=float, help="Second score")
 def compare(score_a, score_b):
     """Compare two scores."""
-    if score_a > score_b:
-        print("Score A is better")
-    elif score_b > score_a:
-        print("Score B is better")
-    else:
-        print("Scores are equal")
+    print(compare_scores(score_a, score_b))
 
 
 if __name__ == "__main__":
