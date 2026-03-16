@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tracker-benchmark"
+version = "0.1.0"
+description = "Benchmark tool for computer vision trackers"
+authors = [{ name = "Oleksii" }]
+dependencies = [
+    "click",
+]
+
+[project.scripts]
+tracker-benchmark = "cli:cli"
+
+[tool.setuptools]
+packages = ["tracker_benchmark"]
