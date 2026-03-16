@@ -17,13 +17,24 @@ def parse_box(box_str):
 @click.option("--box-b", required=True, help="Box B: x1,y1,x2,y2")
 def run(box_a, box_b):
     """Calculate IoU for two boxes."""
-
     box_a = parse_box(box_a)
     box_b = parse_box(box_b)
 
     score = iou(box_a, box_b)
-
     print(f"IoU score: {score:.4f}")
+
+
+@cli.command()
+@click.option("--score-a", required=True, type=float, help="First score")
+@click.option("--score-b", required=True, type=float, help="Second score")
+def compare(score_a, score_b):
+    """Compare two scores."""
+    if score_a > score_b:
+        print("Score A is better")
+    elif score_b > score_a:
+        print("Score B is better")
+    else:
+        print("Scores are equal")
 
 
 if __name__ == "__main__":
